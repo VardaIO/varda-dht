@@ -1,5 +1,5 @@
 {
-  "name": "bittorrent-dht",
+  "name": "varda-dht",
   "description": "Simple, robust, BitTorrent DHT implementation",
   "version": "9.0.0",
   "author": {
