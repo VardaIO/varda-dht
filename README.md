@@ -1,19 +1,12 @@
-# bittorrent-dht [![travis][travis-image]][travis-url] [![npm][npm-image]][npm-url] [![downloads][downloads-image]][downloads-url] [![javascript style guide][standard-image]][standard-url]
-
-[travis-image]: https://img.shields.io/travis/webtorrent/bittorrent-dht/master.svg
-[travis-url]: https://travis-ci.org/webtorrent/bittorrent-dht
-[npm-image]: https://img.shields.io/npm/v/bittorrent-dht.svg
-[npm-url]: https://npmjs.org/package/bittorrent-dht
-[downloads-image]: https://img.shields.io/npm/dm/bittorrent-dht.svg
-[downloads-url]: https://npmjs.org/package/bittorrent-dht
-[standard-image]: https://img.shields.io/badge/code_style-standard-brightgreen.svg
-[standard-url]: https://standardjs.com
+# varda-dht 
 
 ### Simple, robust, BitTorrent DHT implementation
 
+This Module forked from [bittoret-dht](https://github.com/webtorrent/bittorrent-dht), And the DHT.publish method was from [Asch blockchain](https://github.com/AschPlatform/bittorrent-dht). Thanks for Asch, use bittoret-dht to keep a peer list is so convenient!
+
 Node.js implementation of the [BitTorrent DHT protocol](http://www.bittorrent.org/beps/bep_0005.html). BitTorrent DHT is the main peer discovery layer for BitTorrent, which allows for trackerless torrents. DHTs are awesome!
 
-This module is used by [WebTorrent](http://webtorrent.io).
+This module is used by [WebTorrent](http://webtorrent.io). and [Varda](https://www.varda.io)
 
 ### features
 

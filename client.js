@@ -7,7 +7,7 @@ var equals = require('buffer-equals')
 var EventEmitter = require('events').EventEmitter
 var inherits = require('inherits')
 var KBucket = require('k-bucket')
-var krpc = require('k-rpc')
+var krpc = require('./rpc')
 var LRU = require('lru')
 var randombytes = require('randombytes')
 var simpleSha1 = require('simple-sha1')
@@ -37,7 +37,9 @@ function DHT (opts) {
   this._hashLength = this._hash(Buffer.from('')).length
   this._rpc = opts.krpc || krpc(Object.assign({ idLength: this._hashLength }, opts))
   this._rpc.on('query', onquery)
+  this._rpc.on('publish', onpublish)
   this._rpc.on('node', onnode)
+  this._rpc.on('remove', onremove)
   this._rpc.on('warning', onwarning)
   this._rpc.on('error', onerror)
   this._rpc.on('listening', onlistening)
@@ -97,6 +99,10 @@ function DHT (opts) {
     self._onquery(query, peer)
   }
 
+  function onpublish (message, peer) {
+    self.emit('publish', message, { host: peer.address, port: peer.port })
+  }
+
   function rotateSecrets () {
     self._rotateSecrets()
   }
@@ -115,6 +121,10 @@ function DHT (opts) {
 
   function onnode (node) {
     self.emit('node', node)
+  }
+
+  function onremove(id) {
+    self.emit('remove', id.toString('hex'))
   }
 }
 
@@ -217,7 +227,8 @@ DHT.prototype.addNode = function (node) {
 }
 
 DHT.prototype.removeNode = function (id) {
-  this._rpc.nodes.remove(toBuffer(id))
+  // this._rpc.nodes.remove(toBuffer(id))
+  this._rpc.removeNode(toBuffer(id))
 }
 
 DHT.prototype._sendPing = function (node, cb) {
@@ -479,6 +490,10 @@ DHT.prototype.lookup = function (infoHash, cb) {
 
 DHT.prototype.address = function () {
   return this._rpc.address()
+}
+
+DHT.prototype.publish = function (message) {
+  this._rpc.publish(message)
 }
 
 // listen([port], [address], [onlistening])
