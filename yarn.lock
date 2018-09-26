@@ -99,7 +99,7 @@ brace-expansion@^1.1.7:
     balanced-match "^1.0.0"
     concat-map "0.0.1"
 
-buffer-equals@^1.0.3, buffer-equals@^1.0.4:
+buffer-equals@^1.0.3:
   version "1.0.4"
   resolved "http://r.cnpmjs.org/buffer-equals/download/buffer-equals-1.0.4.tgz#0353b54fd07fd9564170671ae6f66b9cf10d27f5"
 
@@ -727,36 +727,11 @@ jsx-ast-utils@^2.0.1:
   dependencies:
     array-includes "^3.0.3"
 
-k-bucket@^4.0.0:
-  version "4.0.1"
-  resolved "http://r.cnpmjs.org/k-bucket/download/k-bucket-4.0.1.tgz#3fc2e5693f0b7bff90d7b6b476edd6087955d542"
-  dependencies:
-    inherits "^2.0.1"
-    randombytes "^2.0.3"
-
 k-bucket@^5.0.0:
   version "5.0.0"
   resolved "http://r.cnpmjs.org/k-bucket/download/k-bucket-5.0.0.tgz#ef7a401fcd4c37cd31dceaa6ae4440ca91055e01"
   dependencies:
     randombytes "^2.0.3"
-
-k-rpc-socket@^1.7.2:
-  version "1.8.0"
-  resolved "http://r.cnpmjs.org/k-rpc-socket/download/k-rpc-socket-1.8.0.tgz#9a4dd6a4f3795ed847ffa156579cc389990bd1f2"
-  dependencies:
-    bencode "^2.0.0"
-    buffer-equals "^1.0.4"
-    safe-buffer "^5.1.1"
-
-k-rpc@^5.0.0:
-  version "5.0.0"
-  resolved "http://r.cnpmjs.org/k-rpc/download/k-rpc-5.0.0.tgz#a72651860c96db440579e4c9f38dce8a42b481a8"
-  dependencies:
-    buffer-equals "^1.0.3"
-    k-bucket "^4.0.0"
-    k-rpc-socket "^1.7.2"
-    randombytes "^2.0.5"
-    safe-buffer "^5.1.1"
 
 last-one-wins@^1.0.4:
   version "1.0.4"
