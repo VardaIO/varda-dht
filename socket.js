@@ -110,7 +110,12 @@ function RPC (opts) {
         return
       }
 
-      var rid = message.r && message.r.id
+      var rid = message.r && Buffer.isBuffer(message.r.id) ? message.r.id : Buffer.from(message.r.id,'hex') 
+
+      if (req.peer.id) {
+        req.peer.id = Buffer.isBuffer(req.peer.id) ? req.peer.id : Buffer.from(req.peer.id, 'hex')
+      }
+
       if (req.peer && req.peer.id && rid && !equals(req.peer.id, rid)) {
         req.callback(EUNEXPECTEDNODE, null, rinfo)
         self.emit('update')
