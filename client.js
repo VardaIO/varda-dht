@@ -212,7 +212,7 @@ DHT.prototype._checkNodes = function (nodes, force, cb) {
 DHT.prototype.addNode = function (node) {
   var self = this
   if (node.id) {
-    node.id = toBuffer(node.id)
+    node.id = Buffer.isBuffer(node.id) ? node.id : toBuffer(node.id)
     var old = !!this._rpc.nodes.get(node.id)
     this._rpc.nodes.add(node)
     if (!old) {

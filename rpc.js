@@ -81,6 +81,7 @@ function RPC (opts) {
 
   function addNode (data, peer) {
     if (data && isNodeId(data.id, self._idLength) && !equals(data.id, self.id)) {
+      data.id = Buffer.isBuffer(data.id) ? data.id : toBuffer(data.id)
       var old = self.nodes.get(data.id)
       if (old) {
         old.seen = Date.now()
@@ -209,6 +210,7 @@ RPC.prototype.closest = function (target, message, visit, cb) {
 }
 
 RPC.prototype._addNode = function (node) {
+  node.id = Buffer.isBuffer(node.id) ? node.id : toBuffer(node.id)
   var old = this.nodes.get(node.id)
   this.nodes.add(node)
   if (!old) this.emit('node', node)
@@ -313,6 +315,7 @@ RPC.prototype._closest = function (target, message, background, visit, cb) {
   }
 
   function add (node) {
+    node.id = Buffer.isBuffer(node.id) ? node.id : toBuffer(node.id)
     if (equals(node.id, self.id)) return
     table.add(node)
   }
