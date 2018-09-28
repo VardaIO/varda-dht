@@ -116,6 +116,7 @@ RPC.prototype.error = function (node, query, error, cb) {
 }
 
 RPC.prototype.removeNode = function (id) {
+  id = Buffer.isBuffer(id) ? id : toBuffer(id)
   this.nodes.remove(id)
   this.emit('remove', id)
 }
